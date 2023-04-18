@@ -24,20 +24,32 @@
 
 package rs.com.tm.siriusxi.tdd.roman;
 
+import javax.imageio.IIOImage;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Class represents a roman converter to Arabic numbers.
+ * アラビア数字をローマ数字に変換するためのクラス
  *
- * @author mohamed_taman
+ * 例)
+ * II:2
+ * IV:4
+ * VII:7
+ * IX:9
+ * XI:11
+ *
+ * @author change to naito
  * @since 1.0
  */
 final class RomanConverter {
 
     /**
-     * romanSymbols is a holder for each roman character as a key, and equivalent Arabic number as
-     * value.
+     * ローマ数字とアラビア数字をKey:valueで対応させたMap型オブジェクトを作成
+     * HashMapをインスタンス化したMap型無名クラスを代入している
+     * {}部分はコンストラクタをオーバーライドし、内部でputメソッドを使用し各数字ペアをMapオブジェクトに登録している
+     *
+     *
+     *
      */
     private static final Map<Character, Integer> romanSymbols = new HashMap<Character, Integer>() {
         private static final long serialVersionUID = 1L;
@@ -51,32 +63,39 @@ final class RomanConverter {
             put('D', 500);
             put('M', 1000);
         }
+
     };
 
+//  コンストラクタ
     private RomanConverter() {
     }
 
     /**
-     * Method that takes a roman character(s), and returns equivalent Arabic number.
+     * Staticメソッド
      *
      * @param roman character
      * @return equivalent Arabic representation.
      */
     static int convertRomanToArabicNumber(String roman) {
 
+//      toUpperCase：大文字変換
         roman = roman.toUpperCase();
 
         int sum = 0;
         int current = 0;
         int previous = 0;
 
+//      文字列を渡された際、ループにより各文字を走査してアラビア数字に変換する
         for (int index = roman.length() - 1; index >= 0; index--) {
+//          指定indexがローマ数字が含まれるか否か判定
             if (doesSymbolsContainsRomanCharacter(roman, index)) {
-
+//              ローマ数字と対応するアラビア数字を取得
                 current = getSymbolValue(roman, index);
 
+//              現在取得している文字が、前回の文字よりも数値として大きい場合(IV, VX, IXXなど)
                 if (current < previous) {
                     sum -= current;
+//              現在取得している文字が、前回の文字よりも数値として小さい,もしくは同じ場合(VI, XV, XXVなど)
                 } else {
                     sum += current;
                 }
@@ -84,6 +103,7 @@ final class RomanConverter {
                 previous = current;
 
             } else {
+//              IllegalArgumentException：指定した型以外の引数が渡された場合の例外(この場合はstring以外=数字)
                 throw new IllegalArgumentException(
                         String.format("Invalid roman character %s ", getCharValue(roman, index)));
             }
@@ -92,13 +112,16 @@ final class RomanConverter {
     }
 
     private static boolean doesSymbolsContainsRomanCharacter(String roman, int index) {
+//      Mapに登録されたkeyを検索する
         return romanSymbols.containsKey(getCharValue(roman, index));
     }
 
     private static Integer getSymbolValue(String roman, int index) {
+//      MapのKeyとなるローマ数字からアラビア数字を検索し返す
         return romanSymbols.get(getCharValue(roman, index));
     }
 
+//  文字列のindex番目の文字を返す
     private static char getCharValue(String roman, int index) {
         return roman.charAt(index);
     }

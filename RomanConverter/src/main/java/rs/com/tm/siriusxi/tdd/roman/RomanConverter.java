@@ -1,13 +1,23 @@
 package rs.com.tm.siriusxi.tdd.roman;
 
 /**
- * アラビア数字をローマ数字に変換するクラス
+ * ローマ数字とアラビア数字の変換を実行するクラス
  *
- * @author change to naito
- * @since 1.0
+ * @author naito
  */
 final class RomanConverter {
-    public  int convertRomanToArabicNumber(String roman){
-        return 1;
+    /**
+     * ローマ数字とアラビア数字の変換メソッド
+     *
+     * @params  String roman
+     * @retrn   Int
+     */
+    public static int convertRomanToArabicNumber(String roman){
+        if (roman.equals("I")) {
+            return 1;
+        } else if (roman.equals("II")) {
+            return 2;
+        }
+        throw new IllegalArgumentException();
     }
 }

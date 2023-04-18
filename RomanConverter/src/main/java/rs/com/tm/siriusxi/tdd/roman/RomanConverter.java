@@ -13,11 +13,18 @@ final class RomanConverter {
      * @retrn   Int
      */
     public static int convertRomanToArabicNumber(String roman){
-        if (roman.equals("I")) {
-            return 1;
-        } else if (roman.equals("II")) {
-            return 2;
+        int sum = 0;
+        for(char ch : roman.toCharArray()){
+            if(ch == 'I') {
+                sum += 1;
+            } else if (ch == 'V') {
+                sum +=5;
+            }else{
+                throw new IllegalArgumentException(
+                        String.format("Unexpected roman character %s", ch)
+                );
+            }
         }
-        throw new IllegalArgumentException();
+        return sum;
     }
 }

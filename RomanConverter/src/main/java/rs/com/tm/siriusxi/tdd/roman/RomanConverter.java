@@ -16,9 +16,20 @@ final class RomanConverter {
         {
             put('I', 1);
             put('V', 5);
+            put('X', 10);
+            put('L', 50);
+            put('C', 100);
+            put('D', 500);
+            put('M', 1000);
         }
     };
 
+    /**
+     * private のコンストラクタを設置し、外部からのインスタンス化を禁止する事ができる
+     * この場合、クラス内のメソッドを全てstaticにする必要がある
+     * */
+    private RomanConverter(){
+    }
 
     /**
      * ローマ数字とアラビア数字の変換メソッド

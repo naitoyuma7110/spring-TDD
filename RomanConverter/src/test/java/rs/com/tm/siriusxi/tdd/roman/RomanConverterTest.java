@@ -3,7 +3,9 @@ package rs.com.tm.siriusxi.tdd.roman;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static rs.com.tm.siriusxi.tdd.roman.RomanConverter.convertRomanToArabicNumber;
+import static rs.com.tm.siriusxi.tdd.roman.RomanConverterSample.convertRomanToArabicNumberSample;
 
 class RomanConverterTest {
     @Test
@@ -41,6 +43,51 @@ class RomanConverterTest {
     void convertVI() {
         assertEquals(6, convertRomanToArabicNumber("VI"),
                 "Roman V should equal to 6");
+    }
+
+    @Test
+    void convertX() {
+        assertEquals(10, convertRomanToArabicNumber("X"),
+                "Roman X should equal to 10");
+    }
+
+    @Test
+    void convertIX() {
+        assertEquals(9, convertRomanToArabicNumber("IX"),
+                "Roman IX should equal to 9");
+    }
+
+    @Test
+    void convertXXXVI() {
+        assertEquals(36, convertRomanToArabicNumber("XXXVI"),
+                "Roman XXXVI should equal to 36");
+    }
+
+    @Test
+    void convertMMXII() {
+        assertEquals(2012, convertRomanToArabicNumber("MMXII"),
+                "Roman MMXII should equal to 2012");
+    }
+
+    @Test
+    void convertMCMXCVI() {
+        assertEquals(1996, convertRomanToArabicNumber("MCMXCVI"),
+                "Roman MCMXCVI should equal to " +
+                        "1996");
+    }
+
+    @Test
+    void convertInvalidRomanValue() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> convertRomanToArabicNumberSample("Z"),
+                "Invalid roman character Z Should throw (IllegalArgumentException)");
+    }
+
+    @Test
+    void convertVII() {
+        assertEquals(7, convertRomanToArabicNumberSample("vii"),
+                "Roman VII should equal to 7");
     }
 
 

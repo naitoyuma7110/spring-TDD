@@ -31,6 +31,18 @@ class RomanConverterTest {
                 "Roman V should equal to 5");
     }
 
+    @Test
+    void convertIV() {
+        assertEquals(4, convertRomanToArabicNumber("IV"),
+                "Roman V should equal to 4");
+    }
+
+    @Test
+    void convertVI() {
+        assertEquals(6, convertRomanToArabicNumber("VI"),
+                "Roman V should equal to 6");
+    }
+
 
 
 }

@@ -3,9 +3,11 @@ package rs.com.tm.siriusxi.tdd.roman;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static rs.com.tm.siriusxi.tdd.roman.RomanConverter.convertRomanToArabicNumber;
-import static rs.com.tm.siriusxi.tdd.roman.RomanConverterSample.convertRomanToArabicNumberSample;
+import static rs.com.tm.siriusxi.tdd.roman.RomanConverter.convertRomanToArabicNumber;
+
 
 class RomanConverterTest {
     @Test
@@ -32,6 +34,7 @@ class RomanConverterTest {
         assertEquals(5, convertRomanToArabicNumber("V"),
                 "Roman V should equal to 5");
     }
+
 
     @Test
     void convertIV() {
@@ -89,6 +92,7 @@ class RomanConverterTest {
         assertEquals(7, convertRomanToArabicNumberSample("vii"),
                 "Roman VII should equal to 7");
     }
+
 
 
 

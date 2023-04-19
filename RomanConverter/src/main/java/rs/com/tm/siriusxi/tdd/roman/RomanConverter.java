@@ -33,7 +33,6 @@ final class RomanConverter {
 
     /**
      * ローマ数字とアラビア数字の変換メソッド
-     *
      * @param   roman character
      * @return  Int
      */
@@ -54,7 +53,6 @@ final class RomanConverter {
             }else{
                 throw new IllegalArgumentException(String.format("Unexpected roman character %s", getaCharValue(roman, index)));
             }
-
         }
         return sum;
     }

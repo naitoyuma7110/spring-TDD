@@ -23,16 +23,16 @@ final class RomanConverter {
     /**
      * ローマ数字とアラビア数字の変換メソッド
      *
-     * @params  String roman
-     * @retrn   Int
+     * @param   roman character
+     * @return  Int
      */
     public static int convertRomanToArabicNumber(String roman){
         int previous = 0;
-        int current = 0;
+        int current;
         int sum = 0;
-        for(char ch : roman.toCharArray()){
-            if(romanSymbols.containsKey(ch)){
-                current = romanSymbols.get(ch);
+        for(int index = 0; index < roman.length(); index++){
+            if(romanSymbols.containsKey(roman.charAt(index))){
+                current = romanSymbols.get(roman.charAt(index));
                 if(current <= previous){
                     sum += current;
                 }else{
@@ -41,7 +41,7 @@ final class RomanConverter {
                 }
                 previous = current;
             }else{
-                throw new IllegalArgumentException(String.format("Unexpected roman character %s", ch));
+                throw new IllegalArgumentException(String.format("Unexpected roman character %s", roman.charAt(index)));
             }
 
         }

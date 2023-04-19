@@ -31,8 +31,8 @@ final class RomanConverter {
         int current;
         int sum = 0;
         for(int index = 0; index < roman.length(); index++){
-            if(romanSymbols.containsKey(roman.charAt(index))){
-                current = romanSymbols.get(roman.charAt(index));
+            if(doesSymbolsContainsRomanCharacter(roman, index)){
+                current = getSymbolValue(roman, index);
                 if(current <= previous){
                     sum += current;
                 }else{
@@ -41,10 +41,22 @@ final class RomanConverter {
                 }
                 previous = current;
             }else{
-                throw new IllegalArgumentException(String.format("Unexpected roman character %s", roman.charAt(index)));
+                throw new IllegalArgumentException(String.format("Unexpected roman character %s", getaCharValue(roman, index)));
             }
 
         }
         return sum;
+    }
+
+    private static char getaCharValue(String roman, int index) {
+        return roman.charAt(index);
+    }
+
+    private static boolean doesSymbolsContainsRomanCharacter(String roman, int index) {
+        return romanSymbols.containsKey(getaCharValue(roman, index));
+    }
+
+    private static Integer getSymbolValue(String roman, int index) {
+        return romanSymbols.get(getaCharValue(roman, index));
     }
 }

@@ -37,6 +37,7 @@ final class RomanConverter {
      * @return  Int
      */
     public static int convertRomanToArabicNumber(String roman){
+        roman = roman.toUpperCase();
         int previous = 0;
         int current;
         int sum = 0;

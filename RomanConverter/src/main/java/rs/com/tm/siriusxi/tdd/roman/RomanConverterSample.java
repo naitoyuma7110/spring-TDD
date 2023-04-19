@@ -65,7 +65,7 @@ final class RomanConverterSample {
 
     };
 
-//  コンストラクタ
+//  private:コンストラクタ
     private RomanConverterSample() {
     }
 
